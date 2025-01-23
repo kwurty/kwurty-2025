@@ -1,46 +1,42 @@
 <script>
-	import { onMount } from 'svelte';
-	let scrolled = false;
+	let isSticky = false;
 
-	onMount(() => {
-		const handleScroll = () => {
-			scrolled = window.scrollY > 50;
-		};
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	});
+	function handleScroll() {
+		const nav = document.querySelector('nav');
+		const navTop = nav.getBoundingClientRect().top;
+		isSticky = navTop <= 0;
+	}
 </script>
 
-<header class="fixed top-0 z-50 w-full ease-in-out" class:bg-base-100={scrolled}>
-	<div
-		class="navbar mx-auto flex transform items-center justify-between px-4 py-7 duration-300 ease-in-out sm:px-6"
-		class:max-w-3xl={scrolled}
-	>
-		<div>
-			<!-- svelte-ignore a11y_consider_explicit_label -->
-			<a href="/">
-				<img src="" alt="Kwurty" />
-			</a>
-		</div>
-		<nav class="z-50">
-			<ul
-				class="bg-base-100 menu menu-horizontal z-50 flex gap-x-4 rounded-t-none p-2 px-1 sm:gap-x-6"
-			>
-				<li>
-					<a class="text-link font-semibold" href="/projects">Projects</a>
-				</li>
-				<li><a class="text-link font-semibold" href="/about">About</a></li>
-				<li>
-					<a class="text-link font-semibold" href="/experience">Experience</a>
-				</li>
-			</ul>
-		</nav>
+<svelte:window on:scroll={handleScroll} />
+<header class="bg-gradient-radial top-0 z-50 from-sky-300 to-blue-400">
+	<!-- Top Section -->
+	<div class="h-20 bg-opacity-90 py-2 text-center">
+		<p class="text-lg font-semibold text-white">Example Text</p>
 	</div>
+
+	<!-- Navigation Section -->
+	<nav
+		class="flex-no-wrap fixed relative top-0 flex w-full items-center justify-between bg-[#FBFBFB] py-2 shadow-md shadow-black/5 lg:flex-wrap lg:justify-start lg:py-4 dark:bg-neutral-600 dark:shadow-black/10"
+		class:fixed={isSticky}
+		class:top-0={isSticky}
+	>
+		<!-- Logo -->
+		<div class="flex items-center space-x-2">
+			<div class="flex h-10 w-10 items-center justify-center rounded-full bg-white">
+				<span class="font-bold text-blue-500">Logo</span>
+			</div>
+		</div>
+
+		<!-- Links -->
+		<div class="flex space-x-8 font-medium text-white">
+			<a href="/projects" class="transition hover:text-sky-100">Projects</a>
+			<a href="/about" class="transition hover:text-sky-100">About</a>
+			<a href="/experience" class="transition hover:text-sky-100">Experience</a>
+		</div>
+	</nav>
 </header>
 
 <style>
-	:global(.scrolled) .scrolled {
-		background-color: rgba(255, 255, 255, 0.9);
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	}
+	/* Extending the gradient background lower than the header */
 </style>
