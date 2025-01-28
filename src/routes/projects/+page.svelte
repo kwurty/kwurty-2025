@@ -5,7 +5,7 @@
 </script>
 
 <h1>Projects</h1>
-<div>
+<div class="grid grid-cols-1 gap-x-6 gap-y-3 md:grid-cols-2 lg:grid-cols-3">
 	{#each projects as project}
 		<a href={`/projects/${project.id}`}>
 			<Project

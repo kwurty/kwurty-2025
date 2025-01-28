@@ -1,20 +1,24 @@
-<div class="mx-auto space-y-8 lg:max-w-screen-lg">
-	<div class="space-y-4">
-		<h1 class="text-center text-4xl">Hey there, I'm Kurtis</h1>
-		<p class="text-center text-xl md:text-2xl">
-			Designer Turned Developer • Creative Problem Solver • Forever Curious, Always Evolving
-		</p>
-	</div>
-	<div
-		class="from-seafoam-500/80 via-blue-neon/80 to-fuschia-neon/80 mx-auto w-fit rounded-full bg-gradient-to-tr p-px"
-	>
-		<div class="bg-fuschia-900 flex h-full w-full items-center justify-center rounded-full">
-			<p class="py-1 pl-10 pr-5 font-semibold">
-				<span
-					class="before:bg-seafoam-500 before:animate-radiate [&amp;:not(:last-of-type)]:after:absolute after:bg-seafoam-500 relative before:absolute before:-left-6 before:top-[5px] before:h-3
-                before:w-3 before:rounded-full after:-left-8 after:top-3 after:h-[calc(100%+2rem)] after:w-px after:opacity-30"
-				></span>Available for work
-			</p>
+<script>
+	import About from '$lib/components/About.svelte';
+	import Project from '$lib/components/Project.svelte';
+	import { projects } from '$lib/projects';
+</script>
+
+<div class="mx-10 space-y-8 px-10 lg:max-w-screen-lg">
+	<About />
+
+	<div class="rounded-2xl border-t-4 border-t-secondary bg-base-300 p-10 shadow-lg">
+		<h1 class="pb-5 text-2xl">Projects</h1>
+		<div class="grid grid-cols-1 gap-x-6 gap-y-3 md:grid-cols-2 lg:grid-cols-3">
+			{#each projects as project}
+				<a href={`/projects/${project.id}`}>
+					<Project
+						title={project.title}
+						description={project.description}
+						descriptors={project.descriptors}
+					/>
+				</a>
+			{/each}
 		</div>
 	</div>
 </div>
