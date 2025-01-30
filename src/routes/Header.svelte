@@ -14,10 +14,10 @@
 </script>
 
 <svelte:window on:scroll={handleScroll} />
-<header class="w-full">
+<header class="radial-gradient to-bg-base-100 w-full from-accent">
 	<!-- Top Section -->
 	<div
-		class="flex h-[500px] flex-col items-center justify-center bg-accent transition-transform duration-300"
+		class="flex h-[500px] flex-col items-center justify-center transition-transform duration-300"
 		class:translate-y-0={!isSticky}
 		class:-translate-y-full={isSticky}
 		class:mb-20={isSticky}
@@ -33,14 +33,16 @@
 		class:fixed={isSticky}
 		class:relative={!isSticky}
 		class:top-0={isSticky}
+		class:glass={resize}
 	>
 		<div
 			class="container mx-auto flex items-center justify-between px-4 py-2 text-accent transition-all duration-300 ease-in"
 			class:navwidth={resize}
+			class:rounded-2xl={resize}
 		>
 			<div>Logo</div>
 			<div>
-				<ul class="flex space-x-4">
+				<ul class="flex space-x-4 text-base font-bold">
 					<a href="/projects" class="hover:text-secondary"> <li>Projects</li> </a>
 					<a href="/about" class="hover:text-secondary"> <li>About</li> </a>
 					<a href="/experience" class="hover:text-secondary"> <li>Contact</li> </a>
@@ -53,5 +55,8 @@
 <style>
 	.navwidth {
 		width: 50%;
+	}
+	.radial-gradient {
+		background: radial-gradient(circle at top, var(--tw-gradient-from), var(--tw-gradient-to));
 	}
 </style>

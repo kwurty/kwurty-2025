@@ -9,7 +9,7 @@
 
 	<div class="rounded-2xl border-t-4 border-t-secondary bg-base-300 p-10 shadow-lg">
 		<h1 class="pb-5 text-2xl">Projects</h1>
-		<div class="grid grid-cols-1 gap-x-6 gap-y-3 md:grid-cols-2 lg:grid-cols-3">
+		<div class="grid grid-cols-1 gap-x-4 gap-y-3 md:grid-cols-2 lg:grid-cols-3">
 			{#each projects as project}
 				<a href={`/projects/${project.id}`}>
 					<Project

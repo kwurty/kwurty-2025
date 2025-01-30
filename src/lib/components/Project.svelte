@@ -5,10 +5,8 @@
 	export let descriptors = [];
 </script>
 
-<div
-	class="card h-full w-96 rounded-lg bg-accent shadow-xl transition-all duration-100 hover:scale-105"
->
-	<figure class="min-h-44">
+<div class="card h-full rounded-lg bg-accent shadow-xl transition-all duration-100 hover:scale-105">
+	<figure class="min-h-34">
 		<img
 			src={imageUrl}
 			alt={title}
